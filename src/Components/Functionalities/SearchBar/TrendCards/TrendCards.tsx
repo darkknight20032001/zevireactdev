@@ -1,6 +1,7 @@
 import React from "react";
 import TrendCardsItem from "./TrendCardsItem/TrendCardsItem";
 import "./TrendCards.sass";
+import SuggestionList from "../SuggestionList/SuggestionList";
 interface Products {
   id: string;
   name: string;
@@ -13,17 +14,16 @@ const TrendCards: React.FC<{
 }> = ({ productInfo }) => {
   console.log(productInfo);
   return (
-    <div>
+    <div className="ListBox">
       <h1>Latest Trends</h1>
-      <div className="TrendCards" >
-      {productInfo.map((productList: Products) => {
-        return (
-         
+      <div className="TrendCards">
+        {productInfo.map((productList: Products) => {
+          return (
             <TrendCardsItem key={productList.id} productList={productList} />
-         
-        );
-      })}
+          );
+        })}
       </div>
+      <SuggestionList />
     </div>
   );
 };

@@ -14,7 +14,7 @@ const SearchBar = () => {
   const [clicked, setClicked] = useState<boolean>(false);
   function getProductData() {
     let arr: Products[] = [];
-    for (let i = 1; i <= 1000; i++) {
+    for (let i = 1; i <= 5; i++) {
       const randomProductName: string = faker.commerce.productName();
       const randomProductPrice: string = faker.commerce.price();
       const randomProductImg: string = faker.image.avatar();
