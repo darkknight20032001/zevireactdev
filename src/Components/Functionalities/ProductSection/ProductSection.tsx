@@ -4,6 +4,7 @@ import ProductSectionList from "./ProductSectionList/ProductSectionList";
 import "./ProductSection.sass";
 import SearchBar from "../SearchBar/SearchBar";
 import ProductFilter from "./ProductFilter/ProductFilter";
+import SearchProduct from "./SearchProduct/SearchProduct";
 interface Products {
   id: string;
   name: string;
@@ -17,6 +18,7 @@ interface MinMaxPriceRange {
 }
 const ProductSection = () => {
   const [productData, setProductData] = useState<Products[]>([]);
+  const [searchProductItem, setSearchProductItem] = useState<string>(``);
   const [filteredData, setFilteredData] = useState<Products[]>([]);
 
   const [selectPrice, setSelectPrice] = useState<MinMaxPriceRange>({
@@ -59,17 +61,36 @@ const ProductSection = () => {
       filterMyData();
     }
   }, [selectPrice]);
+  function searchFilter() {
+    const dataToFilter = productData.filter((item) => {
+      return item.name.toLowerCase().includes(searchProductItem.toLowerCase());
+    });
+    console.log(dataToFilter);
+    setFilteredData(dataToFilter);
+  }
+  useEffect(() => {
+    if (productData.length > 0) {
+      searchFilter();
+  
+    }
+  }, [searchProductItem]);
   return (
-    <div className="filterProduct">
-      <ProductFilter
-        selectPrice={selectPrice}
-        setSelectPrice={setSelectPrice}
+    <div className="productSection">
+      <SearchProduct
+        searchProductItem={searchProductItem}
+        setSearchProductItem={setSearchProductItem}
       />
-      <div className="productSectionList">
-       {productData.length > 0 &&
-          filteredData.map((productList) => {
-            return <ProductSectionList productList={productList} />;
-          })}
+      <div className="filterProduct">
+        <ProductFilter
+          selectPrice={selectPrice}
+          setSelectPrice={setSelectPrice}
+        />
+        <div className="productSectionList">
+          {productData.length > 0 &&
+            filteredData.map((productList) => {
+              return <ProductSectionList productList={productList} />;
+            })}
+        </div>
       </div>
     </div>
   );

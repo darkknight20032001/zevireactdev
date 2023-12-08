@@ -7,7 +7,7 @@ const HomePage = () => {
  const navigate = useNavigate();
   return (
     <div>
-      
+       <SearchBar />
       <button onClick={(e) =>{
         e.preventDefault();
         navigate('/productSection')}}>Continue here...</button>

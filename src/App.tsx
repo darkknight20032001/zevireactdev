@@ -7,7 +7,7 @@ import SearchBar from "./Components/Functionalities/SearchBar/SearchBar";
 function App() {
   return (
     <div>
-      <SearchBar />
+     
     <BrowserRouter>
     <Routes>
     <Route path='/' element={<HomePage />} />
