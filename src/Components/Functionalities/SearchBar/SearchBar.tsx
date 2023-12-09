@@ -1,14 +1,8 @@
 import { faker } from "@faker-js/faker";
-
 import React, { useEffect, useState } from "react";
 import TrendCards from "./TrendCards/TrendCards";
-interface Products {
-    id: string;
-  name: string;
-  price: string;
-  image: string;
-  rating: string;
-}
+import { Products } from "../../../Interfaces/Products";
+
 const SearchBar = () => {
   const [productInfo, setProductInfo] = useState<Products[]>([]);
   const [clicked, setClicked] = useState<boolean>(false);

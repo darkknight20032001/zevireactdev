@@ -1,12 +1,6 @@
 import React from "react";
 import "./TrendCardsItem.sass";
-interface Products {
-  id: string;
-  name: string;
-  price: string;
-  image: string;
-  rating: string;
-}
+import { Products } from "../../../../../Interfaces/Products";
 const TrendCardsItem: React.FC<{ productList: Products }> = ({
   productList,
 }) => {

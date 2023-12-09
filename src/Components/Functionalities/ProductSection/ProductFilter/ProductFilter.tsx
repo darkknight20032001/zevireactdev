@@ -2,10 +2,7 @@ import React from "react";
 import PriceFilter from "./PriceFilter/PriceFilter";
 import RatingsFilter from "./RatingsFilter/RatingsFilter";
 import "./ProductFilter.sass";
-interface MinMaxPriceRange {
-  minPrice: string;
-  maxPrice: string;
-}
+import { MinMaxPriceRange } from "../../../../Interfaces/MinMaxPriceRange";
 const ProductFilter: React.FC<{
   selectPrice: MinMaxPriceRange;
   setSelectPrice: (newPriceRange: MinMaxPriceRange) => void;

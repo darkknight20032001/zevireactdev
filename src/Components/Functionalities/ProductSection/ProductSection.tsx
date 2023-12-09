@@ -2,20 +2,11 @@ import { faker } from "@faker-js/faker";
 import React, { useEffect, useState } from "react";
 import ProductSectionList from "./ProductSectionList/ProductSectionList";
 import "./ProductSection.sass";
-import SearchBar from "../SearchBar/SearchBar";
 import ProductFilter from "./ProductFilter/ProductFilter";
 import SearchProduct from "./SearchProduct/SearchProduct";
-interface Products {
-  id: string;
-  name: string;
-  price: string;
-  image: string;
-  rating: string;
-}
-interface MinMaxPriceRange {
-  minPrice: string;
-  maxPrice: string;
-}
+import { Products } from "../../../Interfaces/Products";
+import { MinMaxPriceRange } from "../../../Interfaces/MinMaxPriceRange";
+
 const ProductSection = () => {
   const [productData, setProductData] = useState<Products[]>([]);
   const [searchProductItem, setSearchProductItem] = useState<string>(``);
@@ -71,7 +62,6 @@ const ProductSection = () => {
   useEffect(() => {
     if (productData.length > 0) {
       searchFilter();
-  
     }
   }, [searchProductItem]);
   return (

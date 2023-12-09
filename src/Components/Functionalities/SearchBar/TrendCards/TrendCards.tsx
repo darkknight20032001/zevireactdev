@@ -2,13 +2,8 @@ import React from "react";
 import TrendCardsItem from "./TrendCardsItem/TrendCardsItem";
 import "./TrendCards.sass";
 import SuggestionList from "../SuggestionList/SuggestionList";
-interface Products {
-  id: string;
-  name: string;
-  price: string;
-  image: string;
-  rating: string;
-}
+import { Products } from "../../../../Interfaces/Products";
+
 const TrendCards: React.FC<{
   productInfo: Products[];
 }> = ({ productInfo }) => {

@@ -1,13 +1,7 @@
 import React from "react";
-interface PriceRanges {
-  label: string;
-  minPrice: string;
-  maxPrice: string;
-}
-interface MinMaxPriceRange {
-  minPrice: string;
-  maxPrice: string;
-}
+import { MinMaxPriceRange } from "../../../../../Interfaces/MinMaxPriceRange";
+import { PriceRanges } from "../../../../../Interfaces/PriceRanges";
+
 const PriceFilter: React.FC<{
   selectPrice: MinMaxPriceRange,
   setSelectPrice: (newPriceRange: MinMaxPriceRange) => void;
