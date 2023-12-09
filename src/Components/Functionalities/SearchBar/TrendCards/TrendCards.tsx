@@ -10,7 +10,7 @@ const TrendCards: React.FC<{
   console.log(productInfo);
   return (
     <div className="ListBox">
-      <h1>Latest Trends</h1>
+      <h2>Latest Trends</h2>
       <div className="TrendCards">
         {productInfo.map((productList: Products) => {
           return (

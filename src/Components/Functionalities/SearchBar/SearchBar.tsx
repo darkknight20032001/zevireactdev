@@ -2,7 +2,7 @@ import { faker } from "@faker-js/faker";
 import React, { useEffect, useState } from "react";
 import TrendCards from "./TrendCards/TrendCards";
 import { Products } from "../../../Interfaces/Products";
-
+import './SearchBar.sass'
 const SearchBar = () => {
   const [productInfo, setProductInfo] = useState<Products[]>([]);
   const [clicked, setClicked] = useState<boolean>(false);
@@ -29,8 +29,9 @@ const SearchBar = () => {
     }
   }, [clicked]);
   return (
-    <div>
+    <div className="search-bar">
       <input
+      className="search-input"
         type="text"
         placeholder="Search"
         onClick={(e) => {
