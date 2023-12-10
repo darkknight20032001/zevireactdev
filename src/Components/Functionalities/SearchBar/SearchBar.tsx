@@ -2,7 +2,7 @@ import { faker } from "@faker-js/faker";
 import React, { useEffect, useState } from "react";
 import TrendCards from "./TrendCards/TrendCards";
 import { Products } from "../../../Interfaces/Products";
-import './SearchBar.sass'
+import "./SearchBar.sass";
 const SearchBar = () => {
   const [productInfo, setProductInfo] = useState<Products[]>([]);
   const [clicked, setClicked] = useState<boolean>(false);
@@ -28,18 +28,26 @@ const SearchBar = () => {
       getProductData();
     }
   }, [clicked]);
+
+  function clickOutside() {
+    function removeCards() {
+      setClicked(false);
+    }
+    document.addEventListener("mousedown", removeCards);
+  }
+  clickOutside();
   return (
     <div className="search-bar">
       <input
-      className="search-input"
+        className="search-input"
         type="text"
         placeholder="Search"
         onClick={(e) => {
           e.preventDefault();
-          setClicked(!clicked);
+          setClicked(true);
         }}
       />
-      {clicked && <TrendCards productInfo={productInfo} />}
+      <TrendCards clicked={clicked} productInfo={productInfo} />
     </div>
   );
 };

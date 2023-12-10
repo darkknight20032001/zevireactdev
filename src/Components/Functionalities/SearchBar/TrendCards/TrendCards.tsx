@@ -6,10 +6,11 @@ import { Products } from "../../../../Interfaces/Products";
 
 const TrendCards: React.FC<{
   productInfo: Products[];
-}> = ({ productInfo }) => {
-  console.log(productInfo);
+  clicked: boolean;
+}> = ({ productInfo, clicked }) => {
+  console.log("Clicked is ",clicked);
   return (
-    <div className="ListBox">
+    <div className={clicked ? "ListBox" : "NoListBox"}>
       <h2>Latest Trends</h2>
       <div className="TrendCards">
         {productInfo.map((productList: Products) => {

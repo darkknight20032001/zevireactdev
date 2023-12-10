@@ -3,7 +3,7 @@ import "./HoverButton.sass";
 const HoverButton: React.FC<{
   mouseHover: Boolean;
   setMouseHover: (mouseHoverFunc: Boolean) => void;
-}> = ({mouseHover,setMouseHover}) => {
+}> = ({mouseHover}) => {
   return <div className={mouseHover?`HoverProduct`:`NonHoverProduct`}>View Product</div>;
 };
 

@@ -16,6 +16,7 @@ const ProductSection = () => {
     minPrice: "0",
     maxPrice: "5000",
   });
+  const [ratingPts, setRatingPts] = useState<Number>(0);
   function getProductSection() {
     let arr: Products[] = [];
     for (let i = 1; i <= 1000; i++) {
@@ -64,16 +65,33 @@ const ProductSection = () => {
       searchFilter();
     }
   }, [searchProductItem]);
+
+  function filterRatings() {
+    const dataToFilter = productData.filter((item) => {
+      const itemRatings: Number = Number(item.rating);
+      return (ratingPts!==0?itemRatings === ratingPts:ratingPts!==itemRatings);
+    });
+    console.log(dataToFilter);
+    setFilteredData(dataToFilter);
+  }
+  useEffect(() => {
+    if(productData.length>0){
+    filterRatings();
+    }
+  }, [setRatingPts]);
   return (
     <div className="productSection">
       <SearchProduct
         searchProductItem={searchProductItem}
         setSearchProductItem={setSearchProductItem}
       />
+      <h3>Search Results</h3>
       <div className="filterProduct">
         <ProductFilter
           selectPrice={selectPrice}
           setSelectPrice={setSelectPrice}
+          ratingPts={ratingPts}
+          setRatingPts={setRatingPts}
         />
         <div className="productSectionList">
           {productData.length > 0 &&
