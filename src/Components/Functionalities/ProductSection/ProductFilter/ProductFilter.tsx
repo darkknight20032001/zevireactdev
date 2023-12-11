@@ -8,10 +8,17 @@ const ProductFilter: React.FC<{
   setSelectPrice: (newPriceRange: MinMaxPriceRange) => void;
   ratingPts: Number;
   setRatingPts: (newRatingPoints: Number) => void;
-}> = ({ selectPrice, setSelectPrice,ratingPts,setRatingPts }) => {
+}> = ({ selectPrice, setSelectPrice, ratingPts, setRatingPts }) => {
   return (
     <div className="ProductFilter">
       <PriceFilter selectPrice={selectPrice} setSelectPrice={setSelectPrice} />
+      <hr
+        style={{
+          background: "black",
+          color: "black",
+          borderColor: "black",
+        }}
+      />
       <RatingsFilter ratingPts={ratingPts} setRatingPts={setRatingPts} />
     </div>
   );

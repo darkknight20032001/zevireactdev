@@ -18,7 +18,7 @@ const SuggestionList = () => {
 
   return (
     <div className="suggestionList">
-      <h4>Popular Suggestion List</h4>
+      <p><b>Popular suggestions</b></p>
       <div className="suggestionListItems">
         {arrList.length > 0 &&
           arrList.map((suggestionItems: string) => {

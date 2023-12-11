@@ -44,7 +44,7 @@ const ProductSection = () => {
         Number(item.price) >= Number(selectPrice.minPrice) &&
         Number(item.price) <= Number(selectPrice.maxPrice)
       );
-    })
+    });
     setFilteredData(dataToFilter);
   }
   useEffect(() => {
@@ -56,7 +56,7 @@ const ProductSection = () => {
     const dataToFilter = productData.filter((item) => {
       return item.name.toLowerCase().includes(searchProductItem.toLowerCase());
     });
-  
+
     setFilteredData(dataToFilter);
   }
   useEffect(() => {
@@ -67,10 +67,9 @@ const ProductSection = () => {
 
   function filterRatings() {
     const dataToFilter = productData.filter((item) => {
-    
-      return (ratingPts !== 0
+      return ratingPts !== 0
         ? Number(item.rating) === ratingPts
-        : ratingPts !== Number(item.rating));
+        : ratingPts !== Number(item.rating);
     });
     if (ratingPts !== 0) {
       console.log("The rating is ", ratingPts);
@@ -86,7 +85,7 @@ const ProductSection = () => {
   }, [setRatingPts]);
   return (
     <div className="productSection">
-      <h1>{String(ratingPts)}</h1>
+      {/* <h1>{String(ratingPts)}</h1> */}
       <SearchProduct
         searchProductItem={searchProductItem}
         setSearchProductItem={setSearchProductItem}
@@ -100,10 +99,17 @@ const ProductSection = () => {
           setRatingPts={setRatingPts}
         />
         <div className="productSectionList">
-          {productData.length > 0 &&
+        {productData.length>0 && filteredData.length === 0 && (
+            <div className="productSectionListDummy"><h3>No Data Found</h3></div>
+          )}
+          {productData.length > 0 ? (
             filteredData.map((productList) => {
               return <ProductSectionList productList={productList} />;
-            })}
+            })
+          ) : (
+            <div className="productSectionListDummy"></div>
+          )}
+         
         </div>
       </div>
     </div>

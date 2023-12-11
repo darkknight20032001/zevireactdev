@@ -3,7 +3,13 @@ import React, { useEffect, useState } from "react";
 import TrendCards from "./TrendCards/TrendCards";
 import { Products } from "../../../Interfaces/Products";
 import "./SearchBar.sass";
+import { Button, Stack } from "@mui/material";
+import SendIcon from "@mui/icons-material/Send";
+import { useNavigate } from "react-router-dom";
+
 const SearchBar = () => {
+  const navigate = useNavigate();
+
   const [productInfo, setProductInfo] = useState<Products[]>([]);
   const [clicked, setClicked] = useState<boolean>(false);
   function getProductData() {
@@ -38,6 +44,7 @@ const SearchBar = () => {
   clickOutside();
   return (
     <div className="search-bar">
+      <div className="search-bar-box">
       <input
         className="search-input"
         type="text"
@@ -47,6 +54,18 @@ const SearchBar = () => {
           setClicked(true);
         }}
       />
+       <Stack className="continueBtn">
+        <Button
+          variant="contained"
+          endIcon={<SendIcon />}
+          onClick={(e) => {
+            e.preventDefault();
+            navigate("/productSection");
+          }}
+        >
+        </Button>
+      </Stack>
+      </div>
       <TrendCards clicked={clicked} productInfo={productInfo} />
     </div>
   );

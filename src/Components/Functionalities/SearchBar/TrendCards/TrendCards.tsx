@@ -11,7 +11,7 @@ const TrendCards: React.FC<{
   console.log("Clicked is ",clicked);
   return (
     <div className={clicked ? "ListBox" : "NoListBox"}>
-      <h2>Latest Trends</h2>
+      <p><b>Latest Trends</b></p>
       <div className="TrendCards">
         {productInfo.map((productList: Products) => {
           return (

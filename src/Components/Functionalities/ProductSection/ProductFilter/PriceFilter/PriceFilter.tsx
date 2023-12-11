@@ -96,37 +96,39 @@ const PriceFilter: React.FC<{
       maxPrice: "2000",
     },
     {
-      label: "Above 500",
+      label: "Above 2000",
       minPrice: "2000",
       maxPrice: "Infinite",
     },
   ];
   return (
-    <FormControl className="priceRange">
-      PRICE RANGE
-      <RadioGroup
-        aria-labelledby="demo-radio-buttons-group-label"
-        defaultValue="Price Range"
-        name="radio-buttons-group"
-      >
-        {priceRangeList.map((item: PriceRanges) => {
-          return (
-            <FormControlLabel
-              value={item.label}
-              control={<Radio />}
-              label={item.label}
-              onChange={(e) => {
-                e.preventDefault();
-                setSelectPrice({
-                  minPrice: item.minPrice,
-                  maxPrice: item.maxPrice,
-                });
-              }}
-            />
-          );
-        })}
-      </RadioGroup>
-    </FormControl>
+    <div className="priceRange">
+      <FormControl>
+        <p>PRICE RANGE</p>
+        <RadioGroup
+          aria-labelledby="demo-radio-buttons-group-label"
+          defaultValue="Price Range"
+          name="radio-buttons-group"
+        >
+          {priceRangeList.map((item: PriceRanges) => {
+            return (
+              <FormControlLabel
+                value={item.label}
+                control={<Radio />}
+                label={item.label}
+                onChange={(e) => {
+                  e.preventDefault();
+                  setSelectPrice({
+                    minPrice: item.minPrice,
+                    maxPrice: item.maxPrice,
+                  });
+                }}
+              />
+            );
+          })}
+        </RadioGroup>
+      </FormControl>
+    </div>
   );
 };
 export default PriceFilter;
