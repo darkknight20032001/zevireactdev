@@ -7,7 +7,6 @@ const RatingsFilter: React.FC<{
   ratingPts: Number;
   setRatingPts: (newRatingPoints: Number) => void;
 }> = ({ ratingPts, setRatingPts }) => {
-  
   const ratingNumber: number[] = [5, 4, 3, 2, 1];
   return (
     <div>
@@ -15,17 +14,17 @@ const RatingsFilter: React.FC<{
         <Typography>RATINGS</Typography>
         {ratingNumber.map((ratingPoints) => {
           return (
-            <Rating
+            <div
+            className="ratepts"
               key={ratingPoints}
-              value={ratingPoints}
-              readOnly
-              className="ratepts"
               onClick={(e) => {
                 e.preventDefault();
-                console.log(ratingPoints);
                 setRatingPts(ratingPoints);
+               
               }}
-            />
+            >
+              <Rating value={ratingPoints} readOnly  />
+            </div>
           );
         })}
       </Typography>

@@ -19,7 +19,7 @@ const ProductSection = () => {
   const [ratingPts, setRatingPts] = useState<Number>(0);
   function getProductSection() {
     let arr: Products[] = [];
-    for (let i = 1; i <= 1000; i++) {
+    for (let i = 1; i <= 100; i++) {
       const randomProductName: string = faker.commerce.productName();
       const randomProductPrice: string = faker.commerce.price();
       const randomProductImg: string = faker.image.avatar();
@@ -45,7 +45,7 @@ const ProductSection = () => {
         Number(item.price) <= Number(selectPrice.maxPrice)
       );
     });
-    console.log(dataToFilter);
+    
     setFilteredData(dataToFilter);
   }
   useEffect(() => {
@@ -57,7 +57,7 @@ const ProductSection = () => {
     const dataToFilter = productData.filter((item) => {
       return item.name.toLowerCase().includes(searchProductItem.toLowerCase());
     });
-    console.log(dataToFilter);
+  
     setFilteredData(dataToFilter);
   }
   useEffect(() => {
@@ -68,19 +68,26 @@ const ProductSection = () => {
 
   function filterRatings() {
     const dataToFilter = productData.filter((item) => {
-      const itemRatings: Number = Number(item.rating);
-      return (ratingPts!==0?itemRatings === ratingPts:ratingPts!==itemRatings);
+    
+      return (ratingPts !== 0
+        ? Number(item.rating) === ratingPts
+        : ratingPts !== Number(item.rating));
     });
-    console.log(dataToFilter);
+    if (ratingPts !== 0) {
+      console.log("The rating is ", ratingPts);
+      console.log(dataToFilter);
+    }
     setFilteredData(dataToFilter);
   }
   useEffect(() => {
-    if(productData.length>0){
-    filterRatings();
+    if (productData.length > 0) {
+      console.log("Hello");
+      filterRatings();
     }
   }, [setRatingPts]);
   return (
     <div className="productSection">
+      <h1>{String(ratingPts)}</h1>
       <SearchProduct
         searchProductItem={searchProductItem}
         setSearchProductItem={setSearchProductItem}
