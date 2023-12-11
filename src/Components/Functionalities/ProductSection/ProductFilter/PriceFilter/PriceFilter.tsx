@@ -113,6 +113,7 @@ const PriceFilter: React.FC<{
           {priceRangeList.map((item: PriceRanges) => {
             return (
               <FormControlLabel
+                key={item.label}
                 value={item.label}
                 control={<Radio />}
                 label={item.label}

@@ -6,8 +6,8 @@ import { MinMaxPriceRange } from "../../../../Interfaces/MinMaxPriceRange";
 const ProductFilter: React.FC<{
   selectPrice: MinMaxPriceRange;
   setSelectPrice: (newPriceRange: MinMaxPriceRange) => void;
-  ratingPts: Number;
-  setRatingPts: (newRatingPoints: Number) => void;
+  ratingPts: string;
+  setRatingPts: (newRatingPoints: string) => void;
 }> = ({ selectPrice, setSelectPrice, ratingPts, setRatingPts }) => {
   return (
     <div className="ProductFilter">
