@@ -65,8 +65,6 @@ interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;
 }
 
-
-
 const ProductSectionList: React.FC<{ productList: Products }> = ({
   productList,
 }) => {
@@ -77,14 +75,14 @@ const ProductSectionList: React.FC<{ productList: Products }> = ({
     <div className="product-card">
       <Card sx={{ maxWidth: 345 }} className="inner-cards">
         <CardActions disableSpacing>
-          <IconButton aria-label="add to favorites">
-            <FavoriteIcon
-              className={liked ? "likeBtn" : "noLikeBtn"}
-              onClick={(e) => {
-                e.preventDefault();
-                setLiked(!liked);
-              }}
-            />
+          <IconButton
+            aria-label="add to favorites"
+            onClick={(e) => {
+              e.preventDefault();
+              setLiked(!liked);
+            }}
+          >
+            <FavoriteIcon className={liked ? "likeBtn" : "noLikeBtn"} />
           </IconButton>
         </CardActions>
         <CardMedia

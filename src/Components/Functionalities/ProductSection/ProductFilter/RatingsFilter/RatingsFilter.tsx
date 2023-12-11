@@ -1,5 +1,5 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
+
 import Rating from "@mui/material/Rating";
 import Typography from "@mui/material/Typography";
 import "./RatingsFilter.sass";
@@ -7,7 +7,7 @@ const RatingsFilter: React.FC<{
   ratingPts: Number;
   setRatingPts: (newRatingPoints: Number) => void;
 }> = ({ ratingPts, setRatingPts }) => {
-  const [value, setValue] = React.useState<number | null>(2);
+  
   const ratingNumber: number[] = [5, 4, 3, 2, 1];
   return (
     <div>
@@ -16,7 +16,7 @@ const RatingsFilter: React.FC<{
         {ratingNumber.map((ratingPoints) => {
           return (
             <Rating
-              name="read-only"
+              key={ratingPoints}
               value={ratingPoints}
               readOnly
               className="ratepts"
