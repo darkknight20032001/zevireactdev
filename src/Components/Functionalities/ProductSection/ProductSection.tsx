@@ -44,8 +44,7 @@ const ProductSection = () => {
         Number(item.price) >= Number(selectPrice.minPrice) &&
         Number(item.price) <= Number(selectPrice.maxPrice)
       );
-    });
-    
+    })
     setFilteredData(dataToFilter);
   }
   useEffect(() => {
