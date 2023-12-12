@@ -1,24 +1,30 @@
+$bx-shadow: 0px 0px 20px black
+$size-unit: 1rem
+
+@mixin pos($pos: relative)
+  position: $pos
+  top: 10rem
+  left: 18rem
+  width: fit-content
+
+
+
 .search-input
  width: 35rem
- padding: 1rem
+ padding: $size-unit
  border-radius: 0.5rem
  text-align: center
  border-color: transparent
- box-shadow: 0px 0px 20px black
+ box-shadow: $bx-shadow
 
 .search-bar-box
  display: flex
  align-items: center
- position: relative
- top: 10rem
- left: 18rem
-
- width: fit-content
- 
+ @include pos
  
 
 .search-input::placeholder
- font-size: 1rem
+ font-size: $size-unit
  
 
  display: flex
