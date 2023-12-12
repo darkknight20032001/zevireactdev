@@ -1,3 +1,6 @@
+@mixin col($clr: red)
+ color: $clr
+ 
 .product-card
  padding: 1rem
 
@@ -5,9 +8,8 @@
  height: 25rem
 
 .likeBtn 
- color: red
+ @include col()
  
-
 .noLikeBtn
- color: gray
+ @include col($clr: gray)
  

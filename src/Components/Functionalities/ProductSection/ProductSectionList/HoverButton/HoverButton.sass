@@ -1,20 +1,19 @@
+$pad: 0.5rem 1rem
+$bckcol: #ddd
+@mixin hoverFunc($dsp: block,$pos: relative,$bottom: 2rem,$pdng: $pad,$brdr: 2px,$bgcolor: $bckcol,$crsr: pointer,$vsb: hidden)
+  display: $dsp
+  position: $pos
+  bottom: $bottom
+  padding: $pdng
+  border-radius: $brdr
+  background-color: $bgcolor
+  cursor: $crsr
+  visibility: $vsb
+
+
 .HoverProduct
-  display: block
-  position: relative
-  bottom: 2rem
-  left: 0
-  padding: 0.5rem 1rem
-  border-radius: 2px
-  background-color: #ddd
-  cursor: pointer
+  @include hoverFunc($vsb: visible)
+  
 
 .NonHoverProduct
-  display: block
-  visibility: hidden
-  position: relative
-  bottom: 2rem
-  left: 0
-  padding: 0.5rem 1rem
-  border-radius: 2px
-  background-color: #ddd
-  cursor: pointer
+  @include hoverFunc()

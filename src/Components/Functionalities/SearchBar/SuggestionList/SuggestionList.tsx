@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./SuggestionList.sass";
 import { faker } from "@faker-js/faker";
-const SuggestionList = () => {
+const SuggestionList: React.FC = () => {
   const [arrList, setArrList] = useState<string[]>([]);
   function getList() {
     let arr: string[] = [];

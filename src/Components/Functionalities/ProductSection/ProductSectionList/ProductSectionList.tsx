@@ -1,48 +1,3 @@
-// import React, { useState } from "react";
-// import "./ProductSectionList.sass";
-// import LikedButton from "./Liked Functionality/LikedButton";
-// import HoverButton from "./HoverButton/HoverButton";
-// interface Products {
-//   id: string;
-//   name: string;
-//   price: string;
-//   image: string;
-//   rating: string;
-// }
-// interface MinMaxPriceRange {
-//   minPrice: string;
-//   maxPrice: string;
-// }
-// const ProductSectionList: React.FC<{ productList: Products }> = ({
-//   productList,
-// }) => {
-//   const [liked, setLiked] = useState<Boolean>(false);
-//   const [mouseHover, setMouseHover] = useState<Boolean>(false);
-//   return (
-//     <div
-//       className="productSectionBox"
-//       onMouseEnter={() => {
-//         setMouseHover(true);
-//       }}
-//       onMouseLeave={() => {
-//         setMouseHover(false);
-//       }}
-//     >
-//       <div id="productSectionList">
-//         <div className='ImageBox'>
-//           <LikedButton liked={liked} setLiked={setLiked} />
-//           <img src={productList.image} alt="" width="100" height="100" />
-//         </div>
-//         <p>{productList.name}</p>
-//         <p>{productList.price}</p>
-//         <p>{productList.rating}</p>
-//         <HoverButton mouseHover={mouseHover} setMouseHover={setMouseHover} />
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default ProductSectionList;
 import * as React from "react";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
@@ -55,10 +10,6 @@ import "./ProductSectionList.sass";
 import { Products } from "../../../../Interfaces/Products";
 import HoverButton from "./HoverButton/HoverButton";
 import { Rating } from "@mui/material";
-
-interface ExpandMoreProps extends IconButtonProps {
-  expand: boolean;
-}
 
 const ProductSectionList: React.FC<{ productList: Products }> = ({
   productList,

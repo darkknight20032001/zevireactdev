@@ -1,7 +1,12 @@
-.productSectionList
- display: grid
- grid-template-columns: 1fr 1fr 1fr
+$grd-tmp: 1fr 1fr 1fr
+
+@mixin displayBox($dsp: grid,$gtc: $grd-tmp)
+ display: $dsp
+ grid-template-columns: $grd-tmp
  justify-items: center
+
+.productSectionList
+ @include displayBox
  width: 60rem
 
 .filterProduct

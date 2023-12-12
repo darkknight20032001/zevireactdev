@@ -1,4 +1,3 @@
-import { faker } from "@faker-js/faker";
 import React, { useEffect, useState } from "react";
 import ProductSectionList from "./ProductSectionList/ProductSectionList";
 import "./ProductSection.sass";
@@ -7,8 +6,9 @@ import SearchProduct from "./SearchProduct/SearchProduct";
 import { Products } from "../../../Interfaces/Products";
 import { MinMaxPriceRange } from "../../../Interfaces/MinMaxPriceRange";
 import LazyLoad from "react-lazy-load";
+import { arr } from "../../../FakeData/productDataArr";
 
-const ProductSection = () => {
+const ProductSection: React.FC = () => {
   const [productData, setProductData] = useState<Products[]>([]);
   const [searchProductItem, setSearchProductItem] = useState<string>(``);
   const [filteredData, setFilteredData] = useState<Products[]>([]);
@@ -18,74 +18,61 @@ const ProductSection = () => {
     maxPrice: "5000",
   });
 
-  function getProductSection() {
-    let arr: Products[] = [];
-    for (let i = 1; i <= 100; i++) {
-      const randomProductName: string = faker.commerce.productName();
-      const randomProductPrice: string = faker.commerce.price();
-      const randomProductImg: string = faker.image.avatar();
-      const productObj: Products = {
-        id: String(i),
-        name: randomProductName,
-        price: randomProductPrice,
-        image: randomProductImg,
-        rating: String(Math.round(Math.random() * 5)),
-      };
-      arr.push(productObj);
-    }
-    setProductData(arr);
-    setFilteredData(arr);
-  }
   useEffect(() => {
+    function getProductSection() {
+      setProductData(arr);
+      setFilteredData(arr);
+    }
     getProductSection();
   }, []);
-  function filterMyData() {
-    const dataToFilter = productData.filter((item: Products) => {
-      return (
-        Number(item.price) >= Number(selectPrice.minPrice) &&
-        Number(item.price) <= Number(selectPrice.maxPrice)
-      );
-    });
-    setFilteredData(dataToFilter);
-  }
+
   useEffect(() => {
+    function filterMyData() {
+      const dataToFilter = productData.filter((item: Products) => {
+        return (
+          Number(item.price) >= Number(selectPrice.minPrice) &&
+          Number(item.price) <= Number(selectPrice.maxPrice)
+        );
+      });
+      setFilteredData(dataToFilter);
+    }
     if (productData.length > 0) {
       filterMyData();
     }
   }, [selectPrice]);
-  function searchFilter() {
-    const dataToFilter = productData.filter((item: Products) => {
-      return item.name.toLowerCase().includes(searchProductItem.toLowerCase());
-    });
 
-    setFilteredData(dataToFilter);
-  }
   useEffect(() => {
+    function searchFilter() {
+      const dataToFilter = productData.filter((item: Products) => {
+        return item.name
+          .toLowerCase()
+          .includes(searchProductItem.toLowerCase());
+      });
+
+      setFilteredData(dataToFilter);
+    }
     if (productData.length > 0) {
       searchFilter();
     }
   }, [searchProductItem]);
 
-  function filterRatings() {
-    const dataToFilter = productData.filter((item: Products) => {
-      return ratingPts !== `0`
-        ? item.rating === ratingPts
-        : ratingPts !== item.rating;
-    });
-
-    setFilteredData(dataToFilter);
-  }
   useEffect(() => {
+    function filterRatings() {
+      const dataToFilter = productData.filter((item: Products) => {
+        return ratingPts !== `0`
+          ? item.rating === ratingPts
+          : ratingPts !== item.rating;
+      });
+
+      setFilteredData(dataToFilter);
+    }
     if (productData.length > 0) {
       filterRatings();
     }
   }, [ratingPts]);
   return (
     <div className="productSection">
-      <SearchProduct
-        searchProductItem={searchProductItem}
-        setSearchProductItem={setSearchProductItem}
-      />
+      <SearchProduct setSearchProductItem={setSearchProductItem} />
       <h3>Search Results</h3>
       <div className="filterProduct">
         <ProductFilter
@@ -103,9 +90,14 @@ const ProductSection = () => {
           {productData.length > 0 ? (
             filteredData.map((productList: Products) => {
               return (
-              <LazyLoad key={productList.id} className='lazyLoader' offset={10}>
-              <ProductSectionList  productList={productList} />
-               </LazyLoad>);
+                <LazyLoad
+                  key={productList.id}
+                  className="lazyLoader"
+                  offset={10}
+                >
+                  <ProductSectionList productList={productList} />
+                </LazyLoad>
+              );
             })
           ) : (
             <div className="productSectionListDummy"></div>

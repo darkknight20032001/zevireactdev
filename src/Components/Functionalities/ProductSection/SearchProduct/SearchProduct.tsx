@@ -1,9 +1,9 @@
 import React from "react";
 import './SearchProduct.sass'
 const SearchProduct: React.FC<{
-  searchProductItem: string;
+  
   setSearchProductItem: (newSearchProductItem: string) => void;
-}> = ({ searchProductItem, setSearchProductItem }) => {
+}> = ({  setSearchProductItem }) => {
   return (
     <input
       type="text"
