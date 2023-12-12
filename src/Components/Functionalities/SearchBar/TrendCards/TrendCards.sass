@@ -1,4 +1,4 @@
-.ListBox
+@mixin listBoxUI()
  border: 2px solid transparent
  box-shadow: 0px 0px 10px black
  padding: 2rem 0rem 2rem 2rem
@@ -16,35 +16,20 @@
   width: fit-content
   font-family: 'Roboto', sans-serif
   font-size: 1.5rem
+ 
+ 
+  
+
+.ListBox
+ @include listBoxUI
 
 .NoListBox
- background-color: white
  visibility: hidden
- border: 2px solid transparent
- box-shadow: 0px 0px 10px black
-
- padding: 2rem 0rem 2rem 2rem
- width: 52rem
- height: 38rem
- display: flex
- flex-direction: column
- border-radius: 5px
- margin-top: 1rem
- position: relative
- top: 12rem
- left: 12rem
- p
-  padding-left: 10px
-  width: fit-content
-  font-family: 'Roboto', sans-serif
-  font-size: 1.5rem
- 
-
-
- 
+ @include listBoxUI
 
 .TrendCards
  display: flex
  flex-direction: row
+ 
  
  

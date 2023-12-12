@@ -1,26 +1,29 @@
 $bx-shadow: 0px 0px 20px black
 $size-unit: 1rem
-
-@mixin pos($pos: relative)
-  position: $pos
+@mixin pos()
+  position: relative
   top: 10rem
   left: 18rem
   width: fit-content
+@mixin wdthbrdr($wdth: 35rem , $brrad: 0.5rem)
+ width: $wdth
+ border-radius: $brrad
 
 
 
 .search-input
- width: 35rem
+ @include wdthbrdr
  padding: $size-unit
- border-radius: 0.5rem
+ 
  text-align: center
  border-color: transparent
  box-shadow: $bx-shadow
-
+ 
 .search-bar-box
  display: flex
  align-items: center
  @include pos
+  
  
 
 .search-input::placeholder
@@ -36,7 +39,8 @@ $size-unit: 1rem
  Button
   border-radius: 50%
   width: 4rem
-  height: 4rem
+  @include wdthbrdr($wdth: 1rem, $brrad: 10%)
+  height: 3rem
   
 
  
