@@ -6,6 +6,7 @@ import ProductFilter from "./ProductFilter/ProductFilter";
 import SearchProduct from "./SearchProduct/SearchProduct";
 import { Products } from "../../../Interfaces/Products";
 import { MinMaxPriceRange } from "../../../Interfaces/MinMaxPriceRange";
+import LazyLoad from "react-lazy-load";
 
 const ProductSection = () => {
   const [productData, setProductData] = useState<Products[]>([]);
@@ -100,8 +101,11 @@ const ProductSection = () => {
             </div>
           )}
           {productData.length > 0 ? (
-            filteredData.map((productList: Products, i) => {
-              return <ProductSectionList key={i} productList={productList} />;
+            filteredData.map((productList: Products) => {
+              return (
+              <LazyLoad key={productList.id} className='lazyLoader' offset={10}>
+              <ProductSectionList  productList={productList} />
+               </LazyLoad>);
             })
           ) : (
             <div className="productSectionListDummy"></div>
