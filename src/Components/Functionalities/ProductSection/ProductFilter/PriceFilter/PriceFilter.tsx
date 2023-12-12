@@ -71,14 +71,13 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
-import FormLabel from "@mui/material/FormLabel";
 import { MinMaxPriceRange } from "../../../../../Interfaces/MinMaxPriceRange";
 import { PriceRanges } from "../../../../../Interfaces/PriceRanges";
 import "./PriceFilter.sass";
 const PriceFilter: React.FC<{
-  selectPrice: MinMaxPriceRange;
+  
   setSelectPrice: (newPriceRange: MinMaxPriceRange) => void;
-}> = ({ selectPrice, setSelectPrice }) => {
+}> = ({  setSelectPrice }) => {
   const priceRangeList: PriceRanges[] = [
     {
       label: "Below 500",

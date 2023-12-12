@@ -76,7 +76,7 @@ const ProductSection: React.FC = () => {
       <h3>Search Results</h3>
       <div className="filterProduct">
         <ProductFilter
-          selectPrice={selectPrice}
+          
           setSelectPrice={setSelectPrice}
           ratingPts={ratingPts}
           setRatingPts={setRatingPts}

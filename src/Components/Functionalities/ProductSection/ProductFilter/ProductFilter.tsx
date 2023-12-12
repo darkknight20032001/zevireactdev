@@ -4,14 +4,14 @@ import RatingsFilter from "./RatingsFilter/RatingsFilter";
 import "./ProductFilter.sass";
 import { MinMaxPriceRange } from "../../../../Interfaces/MinMaxPriceRange";
 const ProductFilter: React.FC<{
-  selectPrice: MinMaxPriceRange;
+  
   setSelectPrice: (newPriceRange: MinMaxPriceRange) => void;
   ratingPts: string;
   setRatingPts: (newRatingPoints: string) => void;
-}> = ({ selectPrice, setSelectPrice, ratingPts, setRatingPts }) => {
+}> = ({  setSelectPrice, ratingPts, setRatingPts }) => {
   return (
     <div className="ProductFilter">
-      <PriceFilter selectPrice={selectPrice} setSelectPrice={setSelectPrice} />
+      <PriceFilter  setSelectPrice={setSelectPrice} />
       <hr
         style={{
           background: "black",
