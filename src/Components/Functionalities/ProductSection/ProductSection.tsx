@@ -39,7 +39,7 @@ const ProductSection: React.FC = () => {
     if (productData.length > 0) {
       filterMyData();
     }
-  }, [selectPrice]);
+  }, [selectPrice,productData]);
 
   useEffect(() => {
     function searchFilter() {
@@ -54,7 +54,7 @@ const ProductSection: React.FC = () => {
     if (productData.length > 0) {
       searchFilter();
     }
-  }, [searchProductItem]);
+  }, [searchProductItem,productData]);
 
   useEffect(() => {
     function filterRatings() {
@@ -69,7 +69,7 @@ const ProductSection: React.FC = () => {
     if (productData.length > 0) {
       filterRatings();
     }
-  }, [ratingPts]);
+  }, [ratingPts,productData]);
   return (
     <div className="productSection">
       <SearchProduct setSearchProductItem={setSearchProductItem} />
